@@ -1,29 +1,304 @@
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="index.css">
-  </head>
-  <body>
-    <div class="container">
-        <h2>Dependent DropDown</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Data Table</title>
+    <link rel="stylesheet" type="text/css" href="home.css" />
+    <script src="https://kit.fontawesome.com/a25d8d8ed9.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</head>
+<body>
+    <div class="Heading">
+        <h>Data Table</h>
+    </div>
+     
+    <div class="action-buttons">
+        <div><i class="fa-solid fa-user-plus"></i> Add Vendor</div>
+        <div><i class="fa-solid fa-plus"></i> Add Product</div>
+        <div><i class="fa-solid fa-pen-to-square"></i> Edit Product</div>
+    </div> 
+   <div class="search_buttons">
 
-        <form action="#">
-            <select name="" id="country">
-                <option value="">-- Select Country --</option>
-            </select>
-            <select name="" id="state">
-                <option value="">-- Select State --</option>
-            </select>
-            <select name="" id="city">
-                <option value="">-- Select City --</option>
-            </select>
-        </form>
-
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <button onclick="searchTable()"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div>
+        <select id="addColumnDropdown">
+            <option value="Hassaan">Hassaan</option>
+            <option value="Option2">Option2</option>
+            <option value="Option3">Option3</option>
+            <option value="Option4">Option4</option>
+        </select>
+        <button class="button-1" onclick="addColumn()"><i class="fa-solid fa-plus"></i></button>
+        <button class="button-2" onclick="deleteColumn()"><i class="fa-solid fa-trash"></i></button>
+        <button class="button-3" onclick="disableColumn()"><i class="fa-solid fa-eye-slash"></i></button>
     </div>
 
-<script src="index.js"></script>
-  </body>
-  </html>
+</div>
+    <div class="table-wrapper">
+        <table class="data-table" id="myTable">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th class="sortable" data-column="1" data-sort-direction="asc">Product Name </th>
+                    <th class="sortable" data-column="2" data-sort-direction="asc">Title</th>
+                    <th class="sortable" data-column="3" data-sort-direction="asc">Description</th>
+                    <th class="sortable" data-column="4" data-sort-direction="asc">Vendor</th>
+                    <th class="sortable" data-column="5" data-sort-direction="asc">In Stock</th>
+                    <th class="sortable" data-column="6" data-sort-direction="asc">Buying Price</th>
+                    <th class="sortable" data-column="7" data-sort-direction="asc">Sale Price</th>
+                    <th class="sortable" data-column="8" data-sort-direction="asc">Quantity</th>
+                    <th class="sortable" data-column="9" data-sort-direction="asc">Product Type</th>
+                    <th class="sortable" data-column="10" data-sort-direction="asc">Shipping Rate</th>
+                    <th class="sortable" data-column="11" data-sort-direction="asc">Refill Limit</th>
+                    <th class="sortable" data-column="12" data-sort-direction="asc">Product Location</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>Mobile</td>
+                <td>Oneplus</td>
+                <td>Oneplus 8</td>
+                <td>Vendor 1</td>
+                <td>30</td>
+                <td>60000</td>
+                <td>70000</td>
+                <td>50</td>
+                <td>Used</td>
+                <td>2000</td>
+                <td>35</td>
+                <td>Gulberg</td>
+              
+              </tr>
+    
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>Watch</td>
+                <td>Watch ultra</td>
+                <td>Watch ultra 7s</td>
+                <td>Vendor 2</td>
+                <td>100</td>
+                <td>5000</td>
+                <td>8000</td>
+                <td>20</td>
+                <td>Original</td>
+                <td>500</td>
+                <td>100</td>
+                <td>Hafeez center</td>
+               
+              </tr>
+    
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>Camera</td>
+                <td>Sony 250</td>
+                <td>Digital Camera</td>
+                <td>Vendor 4</td>
+                <td>50</td>
+                <td>20000</td>
+                <td>25000</td>
+                <td>15</td>
+                <td>High-End</td>
+                <td>800</td>
+                <td>30</td>
+                <td>Electronics Market</td>
+               
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>Headphones</td>
+                <td>Wireless Headphones</td>
+                <td>High-Quality Sound</td>
+                <td>Vendor 5</td>
+                <td>120</td>
+                <td>1000</td>
+                <td>1500</td>
+                <td>40</td>
+                <td>Wireless</td>
+                <td>200</td>
+                <td>50</td>
+                <td>Audio Store</td>
+              
+              </tr>
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>Tablet</td>
+                <td>Android Tablet</td>
+                <td>13-inch Display</td>
+                <td>Vendor 6</td>
+                <td>80</td>
+                <td>3000</td>
+                <td>4000</td>
+                <td>25</td>
+                <td>Tablet</td>
+                <td>100</td>
+                <td>30</td>
+                <td>Online Store</td>
+               
+              </tr>
+    
+              <tr>
+                <td><input type="checkbox" /></td>
+                <td>Laptop</td>
+                <td>Lenovo</td>
+                <td>Lenovo T470s</td>
+                <td>Vendor 3</td>
+                <td>1</td>
+                <td>50000</td>
+                <td>60000</td>
+                <td>10</td>
+                <td>A+</td>
+                <td>1000</td>
+                <td>10</td>
+                <td>Lahore</td>
+               
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <footer>
+        <p>&copy; 2024 Hassaan Gul. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function addColumn() {
+            const dropdown = document.getElementById("addColumnDropdown");
+            const selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+            const table = document.getElementById("myTable");
+            const headerRow = table.querySelector("thead tr");
+
+            // Check if column already exists
+            if (!headerRow.querySelector(`th[data-name="${selectedOption}"]`)) {
+                const newColumn = document.createElement("th");
+                newColumn.textContent = selectedOption;
+                newColumn.setAttribute("data-name", selectedOption); // Set data-name attribute for identifying column
+                newColumn.classList.add("sortable");
+                headerRow.appendChild(newColumn);
+
+                const bodyRows = table.querySelectorAll("tbody tr");
+                bodyRows.forEach(row => {
+                    const cell = document.createElement("td");
+                    cell.textContent = "New Data";
+                    row.appendChild(cell);
+                });
+            } else {
+                const decision = confirm("Column already exists. Do you want to delete or disable it?");
+                if (decision) {
+                    const action = prompt("Type 'delete' to delete the column or 'disable' to disable it.");
+                    if (action === "delete") {
+                        const columnName = headerRow.querySelector(`th[data-name="${selectedOption}"]`).getAttribute("data-name");
+                        deleteColumn(columnName);
+                    } else if (action === "disable") {
+                        const columnName = headerRow.querySelector(`th[data-name="${selectedOption}"]`).getAttribute("data-name");
+                        disableColumn(columnName);
+                    } else {
+                        alert("Invalid action. Please type 'delete' or 'disable'.");
+                    }
+                }
+            }
+        }
+        
+       
+
+        
+        function deleteColumn() {
+            const dropdown = document.getElementById("addColumnDropdown");
+            const selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+            const table = document.getElementById("myTable");
+            const headerRow = table.querySelector("thead tr");
+            const columnIndex = Array.from(headerRow.children).findIndex(th => th.textContent === selectedOption);
+
+            if (columnIndex !== -1) {
+                headerRow.children[columnIndex].remove();
+                const bodyRows = table.querySelectorAll("tbody tr");
+                bodyRows.forEach(row => {
+                    row.children[columnIndex].remove();
+                });
+            } else {
+                alert("Column does not exist!");
+            }
+        }
+
+        function disableColumn() {
+            const dropdown = document.getElementById("addColumnDropdown");
+            const selectedOption = dropdown.options[dropdown.selectedIndex].value;
+
+            const table = document.getElementById("myTable");
+            const headerRow = table.querySelector("thead tr");
+            const columnIndex = Array.from(headerRow.children).findIndex(th => th.textContent === selectedOption);
+
+            if (columnIndex !== -1) {
+                headerRow.children[columnIndex].classList.toggle("disabled");
+                const bodyRows = table.querySelectorAll("tbody tr");
+                bodyRows.forEach(row => {
+                    row.children[columnIndex].classList.toggle("disabled");
+                });
+            } else {
+                alert("Column does not exist!");
+            }
+        }
+
+
+
+        function editProduct() {
+        const table = document.getElementById("myTable");
+        const selectedRow = table.querySelector('input[type="checkbox"]:checked').closest("tr");
+        
+        if (selectedRow) {
+            const rowData = Array.from(selectedRow.children).map(cell => cell.textContent);
+            const rowDataString = rowData.join('\n');
+            const newWindow = window.open();
+            newWindow.document.write('<pre>' + rowDataString + '</pre>');
+        } else {
+            alert("Please select a row to edit.");
+        }
+    }
+
+    document.querySelector('.action-buttons div:nth-child(3)').addEventListener('click', editProduct);
+
+
+
+    
+    document.querySelectorAll('.sortable').forEach(header => {
+        header.addEventListener('click', () => {
+            const table = document.getElementById('myTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+              
+            const column = header.cellIndex;
+            const sortOrder = header.getAttribute('data-sort-direction');
+
+            const sortedRows = rows.sort((a, b) => {
+                const aValue = a.cells[column].textContent.trim();
+                const bValue = b.cells[column].textContent.trim();
+
+                return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+            });
+
+            tbody.innerHTML = '';
+            sortedRows.forEach(row => tbody.appendChild(row));
+
+            // Toggle sort direction
+            header.setAttribute('data-sort-direction', sortOrder === 'asc' ? 'desc' : 'asc');
+
+            // Remove existing arrow icons
+            document.querySelectorAll('.sort-arrow').forEach(arrow => arrow.remove());
+
+            // Create arrow icon
+            const arrowIcon = document.createElement('span');
+            arrowIcon.classList.add('sort-arrow');
+            arrowIcon.textContent = sortOrder === 'asc' ? '\u25B2' : '\u25BC'; // Unicode for up and down arrows
+            header.appendChild(arrowIcon);
+        });
+    });
+    </script>
+</body>
+
+</html>

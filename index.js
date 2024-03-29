@@ -1,54 +1,40 @@
-let Country_Info = {
-    Pakistan: {
-        Punjab: {Lahore: [],Multan: [],Faisalabad: []},
-        Sindh: {Karachi: [],Hyderabad: [],Sukkur: []},
-        Khyber_Pakhtunkhwa: {Peshawar: [],Abbottabad: [],Swat: []
+// Function to search table rows
+function searchTable() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.trim().toUpperCase();
+    const table = document.getElementById("myTable");
+    const rows = table.getElementsByTagName("tr");
+
+    let foundRowIndex = -1;
+
+    for (let i = 1; i < rows.length; i++) {
+        let found = false;
+        const cells = rows[i].getElementsByTagName("td");
+        for (let j = 0; j < cells.length; j++) {
+            const cellText = cells[j].innerText.trim().toUpperCase();
+            if (cellText.indexOf(filter) > -1) {
+                found = true;
+                cells[j].classList.add("highlighted");
+                break;
+            } else {
+                cells[j].classList.remove("highlighted");
+            }
         }
-    },
-    India: {
-        Uttar_Pradesh: {Lucknow: [],Kanpur: [],Varanasi: []},
-        Maharashtra: {Mumbai: [],Pune: [],Nagpur: []},
-        Rajasthan: {Jaipur: [],Udaipur: [],Jodhpur: []}
-    },
-    UK: {
-        England: {London: [],Manchester: [],Birmingham: []},
-        Scotland: {Edinburgh: [],Glasgow: [],Aberdeen: []},
+        if (found) {
+            rows[i].style.display = "";
+            if (foundRowIndex === -1) {
+                foundRowIndex = i;
+            }
+        } else {
+            rows[i].style.display = "none";
+        }
     }
-};
 
-    const selectCountry = document.getElementById('country');
-    const selectState = document.getElementById('state');
-    const selectCity = document.getElementById('city');
-    const selects = document.querySelectorAll('select');
-
-    selectState.disabled = true;
-    selectCity.disabled = true;
-
- 
-    for(let country in Country_Info){
-        selectCountry.options[selectCountry.options.length] = new Option(country, country);
+    if (foundRowIndex !== -1) {
+        const tableRect = table.getBoundingClientRect();
+        const rowRect = rows[foundRowIndex].getBoundingClientRect();
+        if (rowRect.top < tableRect.top || rowRect.bottom > tableRect.bottom) {
+            table.scrollTop = rows[foundRowIndex].offsetTop - table.offsetTop;
+        }
     }
-
-    // This Portion for Country 
-    selectCountry.onchange = (e) => {
-        selectState.disabled = false;
-        selectCity.disabled = true;
-
-        selectState.length = 1;
-        selectCity.length = 1;
-
-        for(let state in Country_Info[e.target.value]){
-            selectState.options[selectState.options.length] = new Option(state, state);
-        }
-    };
-
-    //  This portion for state
-    selectState.onchange = (e) => {
-        selectCity.disabled = false;
-
-        selectCity.length = 1;
-
-        for(let city in Country_Info[selectCountry.value][e.target.value]){
-            selectCity.options[selectCity.options.length] = new Option(city, city);
-        }
-    };
+}

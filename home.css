@@ -1,0 +1,154 @@
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+td{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.Heading{
+ display: flex;
+ justify-content: center;
+ font-size: 30px;
+ background-color: rgba(0, 0, 0, 0.598);
+ color: white;
+ padding: 20px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse; /*That merges the colums*/
+  }
+  .data-table tr{
+    border-bottom: 1px solid rgb(218, 218, 218);
+  }
+  
+  .data-table th, .data-table td {
+    border: 1px solid gray;
+    padding: 10px;  
+    text-align: center;
+    white-space: nowrap; /* This is not break line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Show ellipsis for overflow content(like ...) */
+    border: none;
+  }
+  
+  .data-table th {
+    background-color: #E7EEF7;
+    color: black;
+  }
+ .table-wrapper {
+  margin: 0px 10px;
+  max-width: 100%; 
+  overflow-x: auto; 
+  margin-bottom: 5rem;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  background-color: gray;
+  padding: 1rem;
+  bottom: 0;
+}
+
+/* Media query for mobile devices */
+@media only screen and (max-width: 700px) {
+  .table-wrapper {
+    width: 100%; 
+  }
+}
+
+
+/* Add this CSS rule for highlighting */
+.highlighted {
+  background-color: #E7EEF7;
+}
+.disabled {
+  opacity: 0.5; /* Adjust as needed */
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 7px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #E7EEF7;
+}
+
+.search_buttons{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  gap: 15px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+align-items: center;
+}
+
+input[type="text"],
+select {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  
+}
+
+button {
+  padding: 8px 16px;
+  background-color:#5B7cfd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+}
+
+
+.button-1{
+  background-color: green;
+}
+.button-2{
+  background-color: red;
+}.button-3{
+  background-color: gray;
+}
+/* Sort rows alphabetically by Product Name (second column) */
+.data-table tbody tr:nth-child(1) { order: 1; }
+.data-table tbody tr:nth-child(2) { order: 3; }
+.data-table tbody tr:nth-child(3) { order: 2; }
+
+
+.action-buttons{
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px;
+  gap: 20px;
+}
+.action-buttons div{
+  background-color: #5B7cfd;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.action-buttons div:hover{
+  cursor: pointer;
+  background-color: #395ce6;
+}
+
+
+
