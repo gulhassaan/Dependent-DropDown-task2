@@ -276,7 +276,7 @@ function showDisableAlert() {
                 const bodyRows = table.querySelectorAll("tbody tr");
                 bodyRows.forEach(row => {
                     row.children[columnIndex].classList.toggle("disabled");
-                    showDisabledColumnAlert();
+                    showDisabledColumnAlert();//
                 });
             } else {
                 showDisableAlert();
