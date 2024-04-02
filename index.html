@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="home.css" />
     <script src="https://kit.fontawesome.com/a25d8d8ed9.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </head>
 <body>
     <div class="Heading">
@@ -187,40 +188,57 @@
                     const cell = document.createElement("td");
                     cell.textContent = "Add Data Here";
                     row.appendChild(cell);
+                showAddedColumnAlert();
+
                 });
             } else {
-                showNotification("Column already exists. Please choose another action.");
+                showColumnAlert();
             }
         }
     
-      function showNotification(message) {
-
-    const notification = document.createElement('div');
-    notification.classList.add('notification');
-    notification.textContent = message;
-
-    notification.style.position = 'absolute';
-    notification.style.top = '20px'; 
-    notification.style.right = '-100%'; 
-    notification.style.backgroundColor = 'green';
-    notification.style.color = '#fff';
-    notification.style.padding = '10px';
-    notification.style.borderRadius = '5px';
-    notification.style.zIndex = '9999'; 
-    document.body.appendChild(notification);
-
-    // Trigger reflow to apply initial position
-    notification.getBoundingClientRect();
-    notification.style.transition = 'right 0.5s ease-in-out';
-    notification.style.right = '20px'; 
-
-    // Remove notification after a certain duration
-    setTimeout(() => {
-        notification.style.right = '-100%'; 
-        setTimeout(() => {
-            notification.remove();
-        }, 500); // .5 second
-    }, 3000); //(3 seconds)
+     
+function showAddedColumnAlert() {
+    Swal.fire({
+        title: 'Successful',
+        text: 'Successfully Added Column',
+        icon:"info"
+    });
+}
+function showDeletedColumnAlert() {
+    Swal.fire({
+        title: 'Successful',
+        text: 'Successfully Deleted Column',
+        icon:"info"
+    });
+}
+function showDisabledColumnAlert() {
+    Swal.fire({
+        title: 'Successful',
+        text: 'Successfully Disabled Column',
+        icon:"info"
+    });
+}
+function showColumnAlert() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Column already exists.',
+    });
+}
+function showDeleteAlert() {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Column does not exists.',
+    });
+}
+function showDisableAlert() {
+    // Use SweetAlert syntax to show a notification
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Column does not exists.',
+    });
 }
 
 
@@ -238,9 +256,10 @@
                 const bodyRows = table.querySelectorAll("tbody tr");
                 bodyRows.forEach(row => {
                     row.children[columnIndex].remove();
+                    showDeletedColumnAlert();
                 });
             } else {
-                showNotification("Column does not exists.");
+                showDeleteAlert();
             }
         }
 
@@ -257,9 +276,10 @@
                 const bodyRows = table.querySelectorAll("tbody tr");
                 bodyRows.forEach(row => {
                     row.children[columnIndex].classList.toggle("disabled");
+                    showDisabledColumnAlert();
                 });
             } else {
-                showNotification("Column does not exists.");
+                showDisableAlert();
             }
         }
 
